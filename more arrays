@@ -1,0 +1,133 @@
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+//Squares the integer pointed to by n
+void square(int* n) {
+    if (n) {
+        *n = (*n) * (*n);
+    }
+}
+//Cap the first character 
+void first(char* word) {
+    if (word && islower(word[0])) {
+        word[0] = toupper(word[0]);
+    }
+}
+//Fills an array
+void fill(int* arr, int size) {
+    for (int i = 0; i < size; ++i) {
+        arr[i] = i * i;
+    }
+}
+//The sum of array elements.
+int sum(const int* arr, int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return sum;
+}
+//Swaps two integers 
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+//Dynamically allocates and returns an array filled with val
+int* fill(int size, int val) {
+    int* arr = new int[size];
+    for (int i = 0; i < size; ++i) {
+        arr[i] = val;
+    }
+    return arr;
+}
+//pointer to the larger of two int
+int* max(int* a, int* b) {
+    return (*a > *b) ? a : b;
+}
+//Reverses the array
+void reverse(int* arr, int size) {
+    int* start = arr;
+    int* end = arr + size - 1;
+    while (start < end) {
+        int temp = *start;
+        *start = *end;
+        *end = temp;
+        ++start;
+        --end;
+    }
+}
+//Prints each character until the last value
+void print(const char* arr) {
+    while (*arr) {
+        cout << *arr++;
+    }
+    cout << endl;
+}
+//Sets all odd indices of an array to zero.
+void zero(int* arr, int size) {
+    for (int i = 1; i < size; i += 2) {
+        arr[i] = 0;
+    }
+}
+
+int main() { //starter up codes
+    
+    int x = 5;
+    square(&x);
+    cout << "Square of 5: " << x << endl;
+
+    
+    char word[] = "hello";
+    first(word);
+    cout << "Capitalized: " << word << endl;
+
+   
+    int squares[5];
+    fill(squares, 5);
+    cout << "Squares: ";
+    for (int i = 0; i < 5; ++i) cout << squares[i] << " ";
+    cout << endl;
+
+    
+    cout << "Sum of squares: " << sum(squares, 5) << endl;
+
+    
+    int a = 3, b = 7;
+    swap(a, b);
+    cout << "Swapped: " << a << ", " << b << endl;
+
+    
+    int* filled = fill(4, 9);
+    cout << "Filled array: ";
+    for (int i = 0; i < 4; ++i) cout << filled[i] << " ";
+    cout << endl;
+    delete[] filled;
+
+    
+    int p = 10, q = 20;
+    int* maxVal = max(&p, &q);
+    cout << "Max value: " << *maxVal << endl;
+
+   
+    int nums[] = {1, 2, 3, 4, 5};
+    reverse(nums, 5);
+    cout << "Reversed: ";
+    for (int i = 0; i < 5; ++i) cout << nums[i] << " ";
+    cout << endl;
+
+    
+    const char* text = "Print this!";
+    cout << "Char array: ";
+    print(text);
+
+    
+    int testarr[] = {10, 11, 12, 13, 14, 15};
+    zero(testarr, 6);
+    cout << "Zero odd indices: ";
+    for (int i = 0; i < 6; ++i) cout << testarr[i] << " ";
+    cout << endl;
+
+    return 0;
+}
