@@ -1,0 +1,97 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//the function needed to do all the questions
+string reverse(string str);
+int count(string line);
+bool flip(int num);
+double average(int arr[], int size);
+double convert(double celsius);
+
+int main() {
+    // Reverse a string
+    string str;
+    cout << "Enter a string to reverse: ";
+    cin >> str;
+    cout << "Reversed: " << reverse(str) << endl;
+
+    // Count words in a sentence
+    cin.ignore(); 
+    string line;
+    cout << "Enter a sentence: ";
+    getline(cin, line);
+    cout << "Word count: " << count(line) << endl;
+
+    // Check if the number is a palindrome
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << "Palindrome? " << (flip(num) ? "Yes" : "No") << endl;
+
+    
+    int size;
+    cout << "Enter the size of the array: "; // enter the size first
+    cin >> size;
+    int arr[size];
+    cout << "Enter " << size << " numbers: "; // then ask the user to add the number 
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+    cout << "Average: " << average(arr, size) << endl;
+
+    
+    double celsius;
+    cout << "Enter temperature in Celsius: "; // get the celsius first
+    cin >> celsius;
+    cout << "Fahrenheit: " << convert(celsius) << endl; //convert it to fahrenheit 
+
+    return 0;
+}
+
+
+
+//The first one is for reversing a string
+string reverse(string str) {
+    string reversed = "";
+    for (int i = str.length() - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+    return reversed;
+}
+
+// The second is for counting words in a sentence
+int count(string line) {
+    int count = 1; // Starting at 1 assuming anything can be a word
+    for (char c : line) {
+        if (c == ' ') {
+            count++;
+        }
+    }
+    return count;
+}
+
+// The third one is for checking if a number is a palindrome
+bool flip(int num) {
+    int original = num, reversed = 0;
+    while (num > 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    return original == reversed;
+}
+
+// The fourth one is for calculating the average of numbers in an array
+double average(int arr[], int size) {
+    double sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum / size;
+}
+
+// The last one is for converting Celsius to Fahrenheit
+double convert(double celsius) {
+    return celsius * 9.0 / 5 + 32;
+}
