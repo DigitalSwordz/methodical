@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+     //Define my name first
+    string fullName = "Eric Ni";
+
+    // get my first name and last name
+    string firstName = "", lastName = "";
+    int space = -1;
+
+    // get the space between my name
+    for (int i = 0; i < fullName.length(); i++) {
+        if (fullName[i] == ' ') {
+            space = i;
+            break;
+        }
+    }
+
+    // Getting the first and last names using index
+    for (int i = 0; i < space; i++) {
+        firstName += fullName[i];
+    } 
+    for (int i = space + 1; i < fullName.length(); i++) {
+        lastName += fullName[i];
+    }
+
+    // get my first name length
+    for (int i = 0; i < firstName.length(); i++) {
+        if (firstName[i] >= 'a' && firstName[i] <= 'z') {
+            firstName[i] = firstName[i] - 32;
+        }
+    } //get my last name length
+    for (int i = 0; i < lastName.length(); i++) {
+        if (lastName[i] >= 'a' && lastName[i] <= 'z') {
+            lastName[i] = lastName[i] - 32;
+        }
+    }
+
+    // Print the result
+    cout << "The New Name is: " << firstName << " " << lastName << endl;
+
+    return 0;
+}
